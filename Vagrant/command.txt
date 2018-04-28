@@ -1,0 +1,8 @@
+[Powershell]
+# start
+cd c:\User\sunny\data\aws\vagrant
+vagrant up
+
+
+# end
+vagrant halt
