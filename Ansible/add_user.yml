@@ -1,0 +1,3 @@
+- name: add user hoge
+  user: name=hoge2 state=absent
+  user: name=hoge3

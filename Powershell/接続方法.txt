@@ -1,0 +1,10 @@
+[Client]
+Set-Item WSMan:\localhost\Client\TrustedHosts- Value HOSTNAME
+
+https://www.ipentec.com/document/document.aspx?page=windows-windows-10-add-winrm-trasted-hosts
+
+http://www.vwnet.jp/Windows/PowerShell/InvokeCommand.htm
+
+
+[Server]
+Enable-Rremoting

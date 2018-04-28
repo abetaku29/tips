@@ -1,0 +1,12 @@
+- name: yum install
+  yum: name={{ item }}  state=installed
+  with_items:
+    - php
+    - git
+    - mysql
+    - postgresql
+    - httpd
+    - perl
+    - ruby
+    - python
+    - nginx
