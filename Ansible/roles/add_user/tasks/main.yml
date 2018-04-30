@@ -1,4 +1,5 @@
-    - name: add usr
-      user: name=lig
-    - name: del usr
-      user: name=lig2 state=absent
+- name: add usr
+  user: name=lig3
+
+- name: del usr
+  user: name=lig2 state=absent

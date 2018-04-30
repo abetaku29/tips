@@ -1,0 +1,14 @@
+#
+# main.yml
+#
+- hosts: ansible-client
+  vars:
+    - include_arss: vars/main_vars.yml
+  become: yes
+  tasks:
+#    - include_tasks: add_user.yml
+    - import_tasks: add_user.yml
+  roles:
+#    - yum
+    - add_user
+    - start_service
