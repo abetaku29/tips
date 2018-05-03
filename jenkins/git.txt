@@ -1,0 +1,48 @@
+Jenkins > job名 > 設定
+
+ソースコード管理
+	gitを選ぶ
+	
+	リポジトリ名：	git@github.com:githubユーザ名/リモートリポジトリ名.git
+			（例）	git@github.com:abetaku29/test.git
+
+	認証情報：追加＞jenkins
+		スコープ：グローバル
+		ユーザ名：git
+		秘密鍵：直接入力
+			git用のid_rsaをメモ帳で開いてコピペ
+		パスフレーズ：秘密鍵用のパスワード
+	ビルドするブランチ：ビルドしたいブランチ（デフォルト：*/master）
+
+
+実行結果（shellで"Hello Jenkins"と出力するだけのジョブ）
+
+Started by user jenkins
+Building in workspace /var/lib/jenkins/workspace/firstjob
+Cloning the remote Git repository
+Cloning repository git@github.com:abetaku29/test.git
+ > git init /var/lib/jenkins/workspace/firstjob # timeout=10
+Fetching upstream changes from git@github.com:abetaku29/test.git
+ > git --version # timeout=10
+using GIT_SSH to set credentials 
+ > git fetch --tags --progress git@github.com:abetaku29/test.git +refs/heads/*:refs/remotes/origin/*
+ > git config remote.origin.url git@github.com:abetaku29/test.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url git@github.com:abetaku29/test.git # timeout=10
+Fetching upstream changes from git@github.com:abetaku29/test.git
+using GIT_SSH to set credentials 
+ > git fetch --tags --progress git@github.com:abetaku29/test.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/develop^{commit} # timeout=10
+Checking out Revision 95524577071e3e3dc4363f20e3411871bc1837d6 (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 95524577071e3e3dc4363f20e3411871bc1837d6
+Commit message: "0.2"
+First time build. Skipping changelog.
+[firstjob] $ /bin/sh -xe /tmp/jenkins3350341466968386117.sh
++ echo 'Hello Jenkins'
+Hello Jenkins
+Finished: SUCCESS
+
+
+	

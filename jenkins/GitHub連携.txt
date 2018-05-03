@@ -1,0 +1,46 @@
+[Jenkins]
+Jenkins > Jenkinsの管理 > ユーザーの管理 > 歯車ボタン > APIトークン > APIトークンの表示
+	①User ID
+	②APIトークン
+	
+Jenkins > Jenkinsの管理 > システム設定 > Jenkinsの位置
+	③URL
+		http://54.67.32.39:8080/
+	
+
+job
+Jenkins > job名(firstjob) > 設定
+	[General]
+		ビルドのパラメータ化：ON
+		種類：文字列
+		名前：payload
+	[ソースコード管理]
+		Git
+			リポジトリURL：git@github.com:abetaku29/test.git
+				ユーザ：abetaku29	★GitHubのユーザ名
+				リポジトリ：test.git	★GitHubのリポジトリ名
+			認証情報：
+				ユーザ：git
+				ブランチ：*/develop	★好きなブランチ
+	[ビルド・トリガ]
+		リモートからビルド
+			④認証トークン：abetaku29
+	[ビルド]
+		シェルの実行
+			echo "Hello Jenkins!"
+
+[GitHub]
+リポジトリ > Settings > Webhooks > Add webhook
+	Payload URL
+		http://①:②@③/job/firstjob/buildWithParameters?token=④
+		http://jenkins:86283977c3e6f430814be22421495f93@54.67.32.39:8080/job/firstjob/buildWithParameters?token=abetaku29
+	Content Type
+		application/x-www-form-urlencoded
+	Secret
+		NULL
+	Which event would you like to trigger this webhook?
+		Just the push event.
+	Active
+		ON
+
+
